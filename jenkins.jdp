@@ -1,0 +1,27 @@
+pipeline {
+    agent any
+    stages {
+        stage('pull'){
+            steps {
+                git branch: 'main', url: 'https://github.com/Srujan03076/Cbz-backend.git'
+            }
+        }
+        stage('build'){
+            steps {
+                sh 'mvn clean package'
+            }
+        }
+        stage('deploy'){
+            steps {
+                sh '''
+                    aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 642737942716.dkr.ecr.ap-south-1.amazonaws.com
+                    docker build -t image-backend .
+                    docker tag image-backend:latest 642737942716.dkr.ecr.ap-south-1.amazonaws.com/image-backend:latest
+                    docker push 642737942716.dkr.ecr.ap-south-1.amazonaws.com/image-backend:latest
+                    docker rmi image-backend
+                    kubectl apply -f ./yaml/
+                '''
+            }
+        }
+    }
+}
