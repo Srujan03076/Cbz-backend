@@ -1,3 +1,4 @@
+
 apiVersion: apps/v1 
 kind: Deployment
 metadata:
@@ -8,14 +9,18 @@ spec:
   selector:
     matchLabels:
       app: b9-backend-app
-    replicas: 2 
-    template:
-      metadata:
-        labels:
-          app: b9-backend-app
-      spec:
-        containers:
-          - name: b9-backend-app
-            image: 642737942716.dkr.ecr.ap-south-1.amazonaws.com/image-backend:latest
-            ports:
-              - containerPort: 8080
+  replicas: 2 
+  template:
+    metadata:
+      labels:
+        app: b9-backend-app
+    spec:
+      containers:
+        - name: b9-backend-app
+          image: 642737942716.dkr.ecr.ap-south-1.amazonaws.com/backendimages:latest
+          ports:
+            - containerPort: 8080 
+
+
+
+      
