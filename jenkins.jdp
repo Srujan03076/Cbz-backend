@@ -14,7 +14,7 @@ pipeline {
         stage('deploy'){
             steps {
                 sh '''
-                    docker build -t image-backend .
+                    docker buildx build -t image-backend .
                     docker tag image-backend:latest 642737942716.dkr.ecr.ap-south-1.amazonaws.com/image-backend:latest
                     docker push 642737942716.dkr.ecr.ap-south-1.amazonaws.com/image-backend:latest
                     docker rmi image-backend
