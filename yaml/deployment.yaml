@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: b9-backend-app
-          image: 642737942716.dkr.ecr.ap-south-1.amazonaws.com/backendimages:latest
+          image: 642737942716.dkr.ecr.ap-south-1.amazonaws.com/cbzimages:latest
           ports:
             - containerPort: 8080 
 
