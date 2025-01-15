@@ -14,10 +14,10 @@ pipeline {
         stage('deploy'){
             steps {
                 sh '''
-                    docker build -t backendimages .
-                    docker tag backendimages:latest 642737942716.dkr.ecr.ap-south-1.amazonaws.com/backendimages:latest
-                    docker push 642737942716.dkr.ecr.ap-south-1.amazonaws.com/backendimages:latest
-                    docker rmi backendimages
+                    docker build -t cbzimages .
+                    docker tag cbzimages:latest 642737942716.dkr.ecr.ap-south-1.amazonaws.com/cbzimages:latest
+                    docker push 642737942716.dkr.ecr.ap-south-1.amazonaws.com/cbzimages:latest
+                    docker rmi cbzimages
                     kubectl apply -f ./yaml/
                 '''
             }
